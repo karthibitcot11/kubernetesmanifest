@@ -1,27 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: flaskdemo
   labels:
     app: flaskdemo
-  name: flaskdemo
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: flaskdemo
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: flaskdemo
     spec:
       containers:
-      - image: karthi2611/arocddeployment
-        name: flaskdemo
-        resources: {}
-status: {}
+        - name: flaskdemo
+          image: karthi2611/arocddeployment:${DOCKERTAG}  # Use the environment variable for dynamic image tag
+          ports:
+            - containerPort: 5000
 ---
 apiVersion: v1
 kind: Service
@@ -32,7 +29,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 5000
+    - port: 80
+      targetPort: 5000
   selector:
     app: flaskdemo
