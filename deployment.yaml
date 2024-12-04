@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flaskdemo
-          image: karthi2611/arocddeployment:latest
+          image: docker pull karthi2611/arocddeployment:15
           ports:
             - containerPort: 5000
 ---
