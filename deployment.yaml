@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flaskdemo
-          image: karthi2611/arocddeployment:${DOCKERTAG}  # Use the environment variable for dynamic image tag
+          image: karthi2611/arocddeployment:latest
           ports:
             - containerPort: 5000
 ---
